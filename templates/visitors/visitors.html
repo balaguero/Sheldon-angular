@@ -1,0 +1,23 @@
+<section id="visitors">   
+    <div class="container" ng-controller="VisitorsController">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Comic List</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Comic</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="comic in comics track by $index">
+                            <td>{{comic.name}}</td>
+                            <td>{{comic.gender}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>  

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="InitController">
+<head>
+    <meta charset="UTF-8">
+    <!-- BOOTSTRAP -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title>Sheldon's Library V{{version}}</title>
+
+</head>
+
+<body>
+    <!-- MENU -->
+    <header ng-controller="LoginController" class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul ng-show="isLogin()" class="nav navbar-nav">
+            <li>
+                <a href="#/comics">Comics</a>
+            </li>
+            <li>
+              <a href="#/genders">Genders</a>
+            </li>
+            <li>
+              <a href="#/persons">Persons</a>
+            </li>
+            <li>
+              <a href="#/loans">Loans</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-hide="isLogin()"><a data-toggle="modal" data-target="#modalLogin">Login</a></li>
+            <li ng-show="isLogin()"><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+        <h2>Sheldon's Library V{{version}}</h2>
+    </div>
+
+    <!-- VIEWS -->  
+    <div ng-view></div>
+
+    <!-- Modal -->
+    <div ng-controller="LoginController" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    Username: <input type="text" ng-model="loginUser.user"></input>
+                    Password: <input type="password" ng-model="loginUser.pass"></input>
+                    <br>
+                    <br>
+                    <div ng-hide="canLogin">Username or password are icorrect</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="login()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIBRARIES -->
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/jquery-1.11.1.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/angular-localstorage.js"></script>
+
+    <!-- APP LIBRARIES -->
+    <script src="js/app.js"></script>
+
+    <!-- APP CONTROLLERS -->
+    <script src="js/controllers/init_controller.js"></script>
+    <script src="js/controllers/comics_controller.js"></script>
+    <script src="js/controllers/persons_controller.js"></script>
+    <script src="js/controllers/loans_controller.js"></script>
+    <script src="js/controllers/visitors_controller.js"></script>
+    <script src="js/controllers/login_controller.js"></script>
+    <script src="js/controllers/genders_controller.js"></script>
+
+    <!-- FACTORIES -->
+    <script src="js/factories/comic_factory.js"></script>
+    <script src="js/factories/person_factory.js"></script>
+    <script src="js/factories/loan_factory.js"></script>
+    <script src="js/factories/login_factory.js"></script>
+    <script src="js/factories/staff_factory.js"></script>
+    <script src="js/factories/gender_factory.js"></script>
+
+
+    <!-- ROUTER -->
+    <script src="js/routers/routers.js"></script>
+
+    <!-- DIRECTIVES -->
+    <script src="js/directives/edit_in_line.js"></script>
+
+    <!-- GLOBAL -->
+    <script src="js/global.js"></script>
+    
+</body>
+</html>

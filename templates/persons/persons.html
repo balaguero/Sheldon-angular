@@ -1,0 +1,35 @@
+<section id="persons" ng-controller="PersonsController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Add Person</h3>
+                Name
+                <input type="text" ng-model="newPerson.name"></input>
+                Last    Name
+                <input type="text" ng-model="newPerson.lastName"></input>
+                <button class="btn btn-success" ng-click="createPerson()">Add Person</button>
+            </div>
+            <div class="col-md-12">
+                <h3>Person List</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Last Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="person in persons track by $index">
+                            <td><edit-in-line value="person.name"></edit-in-line></td>
+                            <td><edit-in-line value="person.lastName"></edit-in-line></td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="deletePerson(person.name,person.lastName)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

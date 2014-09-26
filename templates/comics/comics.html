@@ -1,0 +1,39 @@
+<section id="comics">   
+    <div class="container" ng-controller="ComicsController">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Add Comics</h3>
+                Name:
+                <input type="text" ng-model="newComic.name">
+                Genre:
+                <select ng-model="newComic.gender" required>
+                    <option ng-repeat ="gender in genders track by $index">{{gender.name}}</option>
+                </select>
+                <button class="btn btn-success" ng-click="createComic()">Add Comic</button>
+            </div>
+            <div class="col-md-12">
+                <h3>Comic List</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Comic</th>
+                            <th>Genre</th>
+                            <th>Copies</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="comic in comics track by $index">
+                            <td><edit-in-line type="comic" originalValue="{{comic.name}}" value="comic.name"></edit-in-line></td>
+                            <td>{{comic.gender}}</td>
+                            <td>{{comic.copies}}</td>
+                            <td>
+                                <button class="delete btn btn-danger" data-comic="{{comic.name}}" ng-click="deleteComic(comic.name)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>  

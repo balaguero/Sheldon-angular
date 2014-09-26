@@ -1,0 +1,39 @@
+<section id="comics">   
+    <div class="container" ng-controller="LoansController">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Loan a Comic</h3>
+                Comic:
+                <select ng-model="newLoan.comic">
+                    <option ng-repeat="comic in comics track by $index" value="{{comic.name}}" ng-selected="">{{comic.name}}</option>
+                </select>
+                Person:
+                <select ng-model="newLoan.person">
+                    <option ng-repeat="person in persons  track by $index" value="{{person.name}}" ng-selected="">{{person.name}}</option>
+                </select>
+                <button class="btn btn-success" ng-click="loanComic();">Loan Comic</button>
+            </div>
+            <div class="col-md-12">
+                <h3>Loans List</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Comic</th>
+                            <th>Person</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="loan in loans track by $index">
+                            <td>{{loan.comic}}</td>
+                            <td>{{loan.person}}</td>
+                            <td>
+                                <button class="delete btn btn-danger" ng-click="deleteLoan(loan.comic,loan.person)">Return</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>  

@@ -1,0 +1,31 @@
+<section id="genders" ng-controller="GendersController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Add Genre</h3>
+				Genre Name
+				<input type="text" ng-model="newGender.name"></input>
+				<button class="btn btn-success" ng-click="createGender()">Add Genre</button>
+			</div>
+			<div class="col-md-12">
+				<h3>Genre List</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Genre</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="genre in genders track by $index">
+							<td>{{genre.name}}</td>
+							<td>
+								<button class="btn btn-danger" ng-click="deleteGender(genre.name)">Delete</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
